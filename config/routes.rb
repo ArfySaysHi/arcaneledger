@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post "sign_up", to: "users#create"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
   resources :confirmations, only: [ :create, :edit ], param: :confirmation_token
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
