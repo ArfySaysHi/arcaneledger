@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Authentication
   extend ActiveSupport::Concern
 
@@ -19,7 +21,7 @@ module Authentication
   end
 
   def cancel_if_authenticated
-    render json: { message: "You are already logged in." } if user_signed_in?
+    render json: { message: 'You are already logged in.' } if user_signed_in?
   end
 
   private

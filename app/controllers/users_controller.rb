@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Handles user account creation
 class UsersController < ApplicationController
-  before_action :cancel_if_authenticated, only: [ :create ]
+  before_action :cancel_if_authenticated, only: [:create]
 
   def create
     user = User.new(user_params)
@@ -7,7 +10,7 @@ class UsersController < ApplicationController
     if user.save
       user.send_confirmation_email!
 
-      render json: { message: "User created successfully." }, status: :created
+      render json: { message: 'User created successfully.' }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
