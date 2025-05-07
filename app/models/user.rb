@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mostly handles user confirmation and some helpful functions
 class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   MAILER_FROM_EMAIL = 'no-reply@example.com'

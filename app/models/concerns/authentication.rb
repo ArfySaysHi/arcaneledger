@@ -21,7 +21,7 @@ module Authentication
   end
 
   def cancel_if_authenticated
-    render json: { message: 'You are already logged in.' } if user_signed_in?
+    render json: { message: 'You are already logged in.' }, status: :ok if user_signed_in?
   end
 
   private
