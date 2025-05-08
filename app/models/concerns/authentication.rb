@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Handles all Auth operations
 module Authentication
   extend ActiveSupport::Concern
 
@@ -21,7 +22,7 @@ module Authentication
   end
 
   def cancel_if_authenticated
-    render json: { message: 'You are already logged in.' }, status: :ok if user_signed_in?
+    render json: { message: I18n.t('sessions.already_present') }, status: :ok and return if user_signed_in?
   end
 
   private

@@ -13,7 +13,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     # Should respond with a success
     assert_equal 201, @response.status
-    assert_equal UsersController::CREATE_SUCCESS, @response.parsed_body[:message]
+    assert_equal I18n.t('users.create_success'), @response.parsed_body[:message]
   end
 
   test 'should respond with errors if invalid data passed' do
@@ -37,7 +37,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       email: 'admin@admin.com', password: 'admin', password_confirmation: 'admin'
     } }
 
-    puts @response.parsed_body
     assert_equal 200, @response.status
+    assert_equal I18n.t('sessions.already_present'), @response.parsed_body[:message]
   end
 end

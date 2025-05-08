@@ -7,26 +7,26 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:user][:email].downcase)
 
-    render_default_error unless user
-    render_default_error if user.unconfirmed?
-    render_default_error unless user.authenticate(params[:user][:password])
+    render_default_error and return unless user
+    render_default_error and return if user.unconfirmed?
+    render_default_error and return unless user.authenticate(params[:user][:password])
 
     handle_create_success(user)
   end
 
   def destroy
     logout
-    render json: { message: 'Session destroyed.' }, status: :ok
+    render json: { message: I18n.t('sessions.destroy_session') }, status: :ok
   end
 
   private
 
   def handle_create_success(user)
     login user
-    render json: { message: 'Session established.' }, status: :created
+    render json: { message: I18n.t('sessions.create_session') }, status: :created
   end
 
   def render_default_error
-    render json: { errors: ['Incorrect email or password.'] }, status: :unprocessable_entity
+    render json: { errors: [I18n.t('sessions.default_error')] }, status: :unprocessable_entity
   end
 end

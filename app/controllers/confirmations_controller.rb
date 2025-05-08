@@ -10,9 +10,9 @@ class ConfirmationsController < ApplicationController
     if user.present? && user.unconfirmed?
       user.send_confirmation_email!
 
-      render json: { message: 'Check your email to confirm your account.' }
+      render json: { message: I18n.t('confirmations.check_email') }
     else
-      render json: { errors: ['No valid user found under that email address'] }, status: :not_found
+      render json: { errors: [I18n.t('confirmations.cannot_find')] }, status: :not_found
     end
   end
 
@@ -23,9 +23,9 @@ class ConfirmationsController < ApplicationController
       user.confirm!
       login user
 
-      render json: { message: 'Your account has been confirmed.' }
+      render json: { message: I18n.t('confirmations.confirmed') }
     else
-      render json: { errors: ['Invalid token supplied.'] }, status: :unprocessable_content
+      render json: { errors: [I18n.t('confirmations.token_invalid')] }, status: :unprocessable_content
     end
   end
 end

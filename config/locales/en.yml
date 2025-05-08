@@ -28,4 +28,16 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  sessions:
+    already_present: 'You are already logged in.'
+    destroy_session: 'Session destroyed.'
+    create_session: 'Session established.'
+    default_error: 'Incorrect email or password.'
+  users:
+    create_success: 'User created successfully.'
+    subject_confirm: 'Arcane Ledger Confirmation'
+  confirmations:
+    check_email: 'Check your email to confirm your account.'
+    cannot_find: 'No valid user found under that email address.'
+    confirmed: 'Your account has been confirmed.'
+    token_invalid: 'Invalid token supplied.'

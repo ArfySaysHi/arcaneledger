@@ -2,8 +2,6 @@
 
 # Handles user account creation
 class UsersController < ApplicationController
-  CREATE_SUCCESS = 'User created successfully.'
-
   before_action :cancel_if_authenticated, only: [:create]
 
   def create
@@ -12,7 +10,7 @@ class UsersController < ApplicationController
     if user.save
       user.send_confirmation_email!
 
-      render json: { message: CREATE_SUCCESS }, status: :created
+      render json: { message: I18n.t('users.create_success') }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end

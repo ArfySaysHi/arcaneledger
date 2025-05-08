@@ -3,3 +3,4 @@
 admin:
     email: 'admin@admin.com'
     password_digest: <%= BCrypt::Password.create('admin') %>
+    confirmed_at: <%= Date.new(2001, 12, 31) %>
