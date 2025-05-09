@@ -15,6 +15,6 @@ class UserMailerTest < ActionMailer::TestCase
     end
 
     assert_equal email.to, [@user.email]
-    assert_equal email.subject, UserMailer::SUBJECT_CONFIRM
+    assert_equal email.subject, I18n.t('users.subject_confirm')
   end
 end

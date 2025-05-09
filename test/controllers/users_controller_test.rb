@@ -9,7 +9,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     } }
 
     # Should send the confirmation email to the user
-    assert_equal UserMailer::SUBJECT_CONFIRM, ActionMailer::Base.deliveries.last.subject
+    assert_equal I18n.t('users.subject_confirm'), ActionMailer::Base.deliveries.last.subject
 
     # Should respond with a success
     assert_equal 201, @response.status
