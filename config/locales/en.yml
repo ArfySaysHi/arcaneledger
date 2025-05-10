@@ -33,9 +33,16 @@ en:
     destroy_session: 'Session destroyed.'
     create_session: 'Session established.'
     default_error: 'Incorrect email or password.'
+    token_expired: 'Invalid or expired token.'
+  passwords:
+    click_to_reset: 'Click here to reset your password.'
+    create_success: "If that user exists we've sent instructions to their email."
+    account_unconfirmed: 'Please confirm your email first.'
+    update_success: 'Password reset successfully.'
   users:
     create_success: 'User created successfully.'
     subject_confirm: 'Arcane Ledger Confirmation'
+    subject_password_reset: 'Arcane Ledger Password Reset'
   confirmations:
     check_email: 'Check your email to confirm your account.'
     cannot_find: 'No valid user found under that email address.'

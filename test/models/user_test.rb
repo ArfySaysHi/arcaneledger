@@ -89,12 +89,30 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  class UserGeneratePasswordResetToken < UserTest
+    test 'should generate a valid signed_id token' do
+      user = User.create!(email: 'user@example.com', password_digest: BCrypt::Password.create('password'))
+
+      token = user.generate_password_reset_token
+      assert User.find_signed(token, purpose: :reset_password)
+    end
+  end
+
   class UserSendConfirmationEmail < UserTest
     test 'should send the confirmation email' do
       user = User.create!(email: 'user@example.com', password_digest: BCrypt::Password.create('password'))
 
       user.send_confirmation_email!
       assert_equal I18n.t('users.subject_confirm'), ActionMailer::Base.deliveries.last.subject
+    end
+  end
+
+  class UserSendPasswordResetEmail < UserTest
+    test 'should send the password reset email' do
+      user = User.create!(email: 'user@example.com', password_digest: BCrypt::Password.create('password'))
+
+      user.send_password_reset_email!
+      assert_equal I18n.t('users.subject_password_reset'), ActionMailer::Base.deliveries.last.subject
     end
   end
 end

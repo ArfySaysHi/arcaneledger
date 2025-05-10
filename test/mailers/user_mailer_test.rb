@@ -17,4 +17,15 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal email.to, [@user.email]
     assert_equal email.subject, I18n.t('users.subject_confirm')
   end
+
+  test 'should send password reset email' do
+    email = UserMailer.password_reset(@user, 'password_reset_token')
+
+    assert_emails 1 do
+      email.deliver_later
+    end
+
+    assert_equal email.to, [@user.email]
+    assert_equal email.subject, I18n.t('users.subject_password_reset')
+  end
 end
