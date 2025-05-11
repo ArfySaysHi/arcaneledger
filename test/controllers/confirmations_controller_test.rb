@@ -14,7 +14,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'return an error if user is confirmed already' do
-      post confirmations_url, params: { user: { email: 'admin@admin.com' } }
+      post confirmations_url, params: { user: { email: users(:admin).email } }
 
       body = @response.parsed_body
 
@@ -23,7 +23,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should send the confirmation email if the user is present and unconfirmed' do
-      post confirmations_url, params: { user: { email: 'notconfirmed@arcaneledger.com' } }
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
 
       body = @response.parsed_body
 
@@ -35,8 +35,8 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     # Should this be here? What if the same user wants to confirm another account?
     # I suppose just... hit logout...
     test 'return an error if the user is already logged in' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
-      post confirmations_url, params: { user: { email: 'notconfirmed@arcaneledger.com' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
 
       body = @response.parsed_body
 
@@ -55,8 +55,24 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       assert_equal I18n.t('confirmations.token_invalid'), body[:errors][0]
     end
 
+    test 'should fail to confirm the user and return failed_confirm' do
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
+      url = retrieve_confirmation_url
+
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
+      get url
+
+      delete logout_url
+
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
+      get url
+
+      assert_equal 422, @response.status
+      assert_equal I18n.t('confirmations.failed_confirm'), @response.parsed_body[:errors][0]
+    end
+
     test 'should confirm the user and return a confirmation message on success' do
-      post confirmations_url, params: { user: { email: 'notconfirmed@arcaneledger.com' } }
+      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
 
       email = Capybara.string(ActionMailer::Base.deliveries.last.to_s)
       page = email.find(:link, I18n.t('confirmations.click_to_confirm'))
@@ -70,13 +86,21 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'return an error if the user is already logged in' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
       get edit_confirmation_url('some_random_characters')
 
       body = @response.parsed_body
 
       assert_equal 200, @response.status
       assert_equal I18n.t('sessions.already_present'), body[:message]
+    end
+
+    private
+
+    def retrieve_confirmation_url
+      email = Capybara.string(ActionMailer::Base.deliveries.last.to_s)
+      page = email.find(:link, I18n.t('confirmations.click_to_confirm'))
+      page[:href]
     end
   end
 end

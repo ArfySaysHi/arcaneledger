@@ -49,3 +49,4 @@ en:
     confirmed: 'Your account has been confirmed.'
     token_invalid: 'Invalid token supplied.'
     click_to_confirm: 'Click here to confirm your email.'
+    failed_confirm: 'Failed to confirm your account.'

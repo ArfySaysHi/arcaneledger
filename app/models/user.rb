@@ -9,10 +9,15 @@ class User < ApplicationRecord
   has_secure_password
 
   before_save :downcase_email
+  before_save :downcase_unconfirmed_email
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
+  validates :unconfirmed_email, format: { with: URI::MailTo::EMAIL_REGEXP, allow_blank: true }
 
   def confirm!
+    return false unless unconfirmed_or_reconfirming?
+
+    update(email: unconfirmed_email, unconfirmed_email: nil) if unconfirmed_email.present?
     update_columns(confirmed_at: Time.current)
   end
 
@@ -22,6 +27,20 @@ class User < ApplicationRecord
 
   def unconfirmed?
     !confirmed?
+  end
+
+  def reconfirming?
+    unconfirmed_email.present?
+  end
+
+  def unconfirmed_or_reconfirming?
+    unconfirmed? || reconfirming?
+  end
+
+  def confirmable_email
+    return unconfirmed_email if unconfirmed_email.present?
+
+    email
   end
 
   def generate_confirmation_token
@@ -46,5 +65,11 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def downcase_unconfirmed_email
+    return if unconfirmed_email.nil?
+
+    self.unconfirmed_email = unconfirmed_email.downcase
   end
 end

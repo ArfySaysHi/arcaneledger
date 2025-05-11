@@ -12,14 +12,14 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'return failure if the user exists but is unconfirmed' do
-      post passwords_url, params: { user: { email: 'notconfirmed@arcaneledger.com' } }
+      post passwords_url, params: { user: { email: users(:notconfirmed).email } }
 
       assert_equal 422, @response.status
       assert_equal I18n.t('passwords.account_unconfirmed'), @response.parsed_body[:errors][0]
     end
 
     test 'send the email and return a success if a valid user is given' do
-      post passwords_url, params: { user: { email: 'admin@admin.com' } }
+      post passwords_url, params: { user: { email: users(:admin).email } }
 
       email = ActionMailer::Base.deliveries.last
       assert_equal I18n.t('users.subject_password_reset'), email.subject
@@ -29,8 +29,8 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should interrupt the password reset if the user is already authed' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
-      post passwords_url, params: { user: { email: 'admin@admin.com' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
+      post passwords_url, params: { user: { email: users(:admin).email } }
 
       assert_equal 200, @response.status
       assert_equal I18n.t('sessions.already_present'), @response.parsed_body[:message]
@@ -40,7 +40,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   class PasswordsEdit < PasswordsControllerTest
     test 'should interrupt the password reset if the user is already authed' do
       password_reset_token = retrieve_reset_token
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
 
       patch password_url(password_reset_token), params: {
         user: { password: 'newpass', password_confirmation: 'newpass' }, xhr: true
@@ -77,7 +77,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     private
 
     def retrieve_reset_token
-      post passwords_url, params: { user: { email: 'admin@admin.com' } }
+      post passwords_url, params: { user: { email: users(:admin).email } }
 
       email = Capybara.string(ActionMailer::Base.deliveries.last.to_s)
       url = email.find(:link, I18n.t('passwords.click_to_reset'))[:href]

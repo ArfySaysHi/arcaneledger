@@ -5,6 +5,12 @@ admin:
     password_digest: <%= BCrypt::Password.create('admin') %>
     confirmed_at: <%= Date.new(2001, 12, 31) %>
 
-unconfirmed:
+notconfirmed:
     email: 'notconfirmed@arcaneledger.com'
     password_digest: <%= BCrypt::Password.create('password') %>
+
+notreconfirmed:
+    email: 'notreconfirmed@arcaneledger.com'
+    password_digest: <%= BCrypt::Password.create('password') %>
+    unconfirmed_email: 'newemail@arcaneledger.com'
+    confirmed_at: <%= Date.new(2002, 12, 31) %>

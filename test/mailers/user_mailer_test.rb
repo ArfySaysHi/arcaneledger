@@ -7,25 +7,42 @@ class UserMailerTest < ActionMailer::TestCase
     @user = users(:admin)
   end
 
-  test 'should send confirmation email' do
-    email = UserMailer.confirmation(@user, 'confirmation_token')
+  class Confirmation < UserMailerTest
+    test 'should send confirmation email' do
+      email = UserMailer.confirmation(@user, 'confirmation_token')
 
-    assert_emails 1 do
-      email.deliver_later
+      assert_emails 1 do
+        email.deliver_later
+      end
+
+      assert_equal email.to, [@user.email]
+      assert_equal email.subject, I18n.t('users.subject_confirm')
     end
 
-    assert_equal email.to, [@user.email]
-    assert_equal email.subject, I18n.t('users.subject_confirm')
+    test 'should use the unconfirmed_email if available' do
+      user = User.create!(email: 'user@example.com', password_digest: BCrypt::Password.create('password'),
+                          unconfirmed_email: 'other@email.com')
+      email = UserMailer.confirmation(user, 'confirmation_token')
+
+      assert_emails 1 do
+        email.deliver_later
+      end
+
+      assert_equal email.to, [user.unconfirmed_email]
+      assert_equal email.subject, I18n.t('users.subject_confirm')
+    end
   end
 
-  test 'should send password reset email' do
-    email = UserMailer.password_reset(@user, 'password_reset_token')
+  class PasswordReset < UserMailerTest
+    test 'should send password reset email' do
+      email = UserMailer.password_reset(@user, 'password_reset_token')
 
-    assert_emails 1 do
-      email.deliver_later
+      assert_emails 1 do
+        email.deliver_later
+      end
+
+      assert_equal email.to, [@user.email]
+      assert_equal email.subject, I18n.t('users.subject_password_reset')
     end
-
-    assert_equal email.to, [@user.email]
-    assert_equal email.subject, I18n.t('users.subject_password_reset')
   end
 end

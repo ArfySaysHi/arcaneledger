@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 20_250_421_112_159) do
+ActiveRecord::Schema[8.0].define(version: 20_250_511_102_756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pg_catalog.plpgsql'
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[8.0].define(version: 20_250_421_112_159) do
     t.datetime 'updated_at', null: false
     t.datetime 'confirmed_at'
     t.string 'password_digest', null: false
+    t.string 'unconfirmed_email'
     t.index ['email'], name: 'index_users_on_email', unique: true
   end
 end
