@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # UsersController
   post 'sign_up', to: 'users#create'
+  patch 'account', to: 'users#update'
+  delete 'account', to: 'users#destroy'
+
+  # SessionsController
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  # ConfirmationsController
   resources :confirmations, only: %i[create edit], param: :confirmation_token
+
+  # PasswordsController
   resources :passwords, only: %i[create update], param: :password_reset_token
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

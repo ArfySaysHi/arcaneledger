@@ -28,12 +28,15 @@
 #       enabled: "ON"
 
 en:
+  auth:
+      auth_fail: 'You need to login to access this.'
   sessions:
     already_present: 'You are already logged in.'
     destroy_session: 'Session destroyed.'
     create_session: 'Session established.'
     default_error: 'Incorrect email or password.'
     token_expired: 'Invalid or expired token.'
+    incorrect_password: 'Incorrect password supplied.'
   passwords:
     click_to_reset: 'Click here to reset your password.'
     create_success: "If that user exists we've sent instructions to their email."
@@ -41,10 +44,12 @@ en:
     update_success: 'Password reset successfully.'
   users:
     create_success: 'User created successfully.'
+    destroy_success: 'User deleted successfully.'
+    update_success: 'User updated successfully.'
     subject_confirm: 'Arcane Ledger Confirmation'
     subject_password_reset: 'Arcane Ledger Password Reset'
   confirmations:
-    check_email: 'Check your email to confirm your account.'
+    check_email: 'Check your email for confirmation instructions.'
     cannot_find: 'No valid user found under that email address.'
     confirmed: 'Your account has been confirmed.'
     token_invalid: 'Invalid token supplied.'

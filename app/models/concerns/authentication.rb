@@ -25,6 +25,10 @@ module Authentication
     render json: { message: I18n.t('sessions.already_present') }, status: :ok and return if user_signed_in?
   end
 
+  def authenticate_user!
+    render json: { errors: [I18n.t('auth.auth_fail')] }, status: :forbidden and return unless user_signed_in?
+  end
+
   private
 
   def current_user
