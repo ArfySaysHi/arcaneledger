@@ -7,7 +7,7 @@ class ConfirmationsController < ApplicationController
   def create
     user = User.find_by(email: params[:user][:email].downcase)
 
-    cannot_find and return unless user.present? && user.unconfirmed?
+    cannot_find and return unless user.present? && user.unconfirmed_or_reconfirming?
 
     user.send_confirmation_email!
     render json: { message: I18n.t('confirmations.check_email') }

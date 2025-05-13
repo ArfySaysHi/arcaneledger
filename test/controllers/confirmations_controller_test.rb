@@ -32,6 +32,14 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       assert_equal I18n.t('users.subject_confirm'), ActionMailer::Base.deliveries.last.subject
     end
 
+    test 'should send the confirmation email if the user is reconfirming' do
+      post confirmations_url, params: { user: { email: users(:notreconfirmed).email } }
+
+      assert_equal 200, @response.status
+      assert_equal I18n.t('confirmations.check_email'), @response.parsed_body[:message]
+      assert_equal I18n.t('users.subject_confirm'), ActionMailer::Base.deliveries.last.subject
+    end
+
     # Should this be here? What if the same user wants to confirm another account?
     # I suppose just... hit logout...
     test 'return an error if the user is already logged in' do
@@ -59,13 +67,9 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
       url = retrieve_confirmation_url
 
-      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
-      get url
-
-      delete logout_url
-
-      post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
-      get url
+      get url # Confirms the user
+      delete logout_url # Logs out the user
+      get url # Attempts to confirm an already confirmed user
 
       assert_equal 422, @response.status
       assert_equal I18n.t('confirmations.failed_confirm'), @response.parsed_body[:errors][0]
