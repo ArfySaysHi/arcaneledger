@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   # PasswordsController
   resources :passwords, only: %i[create update], param: :password_reset_token
 
+  # ActiveSessionsController
+  resources :active_sessions, only: %i[destroy] do
+    collection do
+      delete "destroy_all"
+    end
+  end
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check

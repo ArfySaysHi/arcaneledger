@@ -43,7 +43,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
     # Should this be here? What if the same user wants to confirm another account?
     # I suppose just... hit logout...
     test 'return an error if the user is already logged in' do
-      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
+      post login_url, params: { user: { email: users(:notconfirmed).email, password: 'admin' } }
       post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
 
       body = @response.parsed_body
