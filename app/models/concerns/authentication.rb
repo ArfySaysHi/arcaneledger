@@ -53,7 +53,8 @@ module Authentication
     session_present = session[:current_active_session_id].present?
     remember_token = cookies.permanent.encrypted[:remember_token]
 
-    ActiveSession.find_by(id: session[:current_active_session_id])&.user and return if session_present
-    ActiveSession.find_by(remember_token: remember_token)&.user and return if remember_token
+    return ActiveSession.find_by(id: session[:current_active_session_id])&.user if session_present
+
+    ActiveSession.find_by(remember_token: remember_token)&.user if remember_token
   end
 end

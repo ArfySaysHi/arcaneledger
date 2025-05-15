@@ -14,7 +14,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should return an error if the user exists but is unconfirmed' do
-      post login_url, params: { user: { email: 'unconfirmed@unconfirmed.com', password: 'password' } }
+      post login_url, params: { user: { email: users(:notconfirmed).email, password: 'password' } }
 
       body = @response.parsed_body
 
@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should return an error if the user exists but password is wrong' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'wrong' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'wrong' } }
 
       body = @response.parsed_body
 
@@ -32,7 +32,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should create the session if all the above are satisfied' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
 
       body = @response.parsed_body
 
@@ -41,8 +41,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should return an error if the user already has an active session' do
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
-      post login_url, params: { user: { email: 'admin@admin.com', password: 'admin' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
 
       body = @response.parsed_body
 
@@ -53,6 +53,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
   class SessionsDestroy < SessionsControllerTest
     test 'should destroy the current session' do
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
       delete logout_url
 
       body = @response.parsed_body
