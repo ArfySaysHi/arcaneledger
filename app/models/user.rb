@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :active_sessions, dependent: :destroy
 
+  belongs_to :guild, optional: true
+
   before_save :downcase_email
   before_save :downcase_unconfirmed_email
 

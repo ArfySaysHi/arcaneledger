@@ -32,7 +32,10 @@ class SessionsController < ApplicationController
     active_session = login user
     remember(active_session) if params[:user][:remember_me] == '1'
 
-    render json: { message: I18n.t('sessions.create_session') }, status: :created
+    @message = I18n.t('sessions.create_session')
+    @data = user
+
+    render template: 'sessions/create', status: :created
   end
 
   def render_default_error

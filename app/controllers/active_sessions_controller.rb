@@ -4,6 +4,10 @@
 class ActiveSessionsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    render json: { data: current_user.active_sessions }, status: :ok
+  end
+
   def destroy
     active_session = current_user.active_sessions.find(params[:id])
     active_session.destroy

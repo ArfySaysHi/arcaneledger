@@ -38,6 +38,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
       assert_equal 201, @response.status
       assert_equal I18n.t('sessions.create_session'), body[:message]
+      assert_equal users(:admin).email, body[:user][:email]
     end
 
     test 'should return an error if the user already has an active session' do
