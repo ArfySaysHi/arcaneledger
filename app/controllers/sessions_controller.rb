@@ -6,11 +6,8 @@ class SessionsController < ApplicationController
   before_action :authenticate_user!, only: %i[destroy]
 
   def create
-    user = User.find_by(email: params[:user][:email].downcase)
-
-    render_default_error and return unless user
-    render_default_error and return if user.unconfirmed?
-    render_default_error and return unless create_session_auth
+    user = User.find_by(email: params.dig(:user, :email)&.downcase)
+    render_default_error and return unless create_valid?(user)
 
     handle_create_success(user)
   end
@@ -26,6 +23,14 @@ class SessionsController < ApplicationController
 
   def create_session_auth
     User.authenticate_by(email: params[:user][:email].downcase, password: params[:user][:password])
+  end
+
+  def create_valid?(user)
+    return false unless user
+    return false if user.unconfirmed?
+    return false unless create_session_auth
+
+    true
   end
 
   def handle_create_success(user)

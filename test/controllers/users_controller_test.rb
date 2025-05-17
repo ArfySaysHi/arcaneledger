@@ -3,6 +3,39 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  class UsersShow < UsersControllerTest
+    test 'should fail if the user is not authed' do
+      get user_url(users(:admin).id)
+
+      assert_equal 403, @response.status
+      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+    end
+
+    test 'should fail if the current user is not in a guild' do
+      post login_url, params: { user: { email: users(:guildless).email, password: 'password' } }
+      get user_url(users(:admin).id)
+
+      assert_equal 403, @response.status
+      assert_equal I18n.t('guilds.must_be_in_a_guild'), @response.parsed_body[:errors][0]
+    end
+
+    test 'should fail if the current user is not in the same guild as the target' do
+      post login_url, params: { user: { email: users(:big_hat_guild).email, password: 'password' } }
+      get user_url(users(:admin).id)
+
+      assert_equal 404, @response.status
+      assert_equal I18n.t('general.not_found'), @response.parsed_body[:errors][0]
+    end
+
+    test 'should return target user if successful' do
+      post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
+      get user_url(users(:guild_member).id)
+
+      assert_equal 200, @response.status
+      assert_equal I18n.t('users.show_success'), @response.parsed_body[:message]
+    end
+  end
+
   class UsersCreate < UsersControllerTest
     test 'should create user if valid data is provided' do
       post sign_up_url, params: { user: {

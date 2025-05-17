@@ -2,10 +2,16 @@
 
 # Handles user account creation
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[destroy update]
+  before_action :authenticate_user!, only: %i[destroy update show]
   before_action :cancel_if_authenticated, only: %i[create]
 
-  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+  def show
+    must_be_in_a_guild and return unless current_user.guild_id
+
+    user = User.where(guild_id: current_user.guild_id).find(params[:id])
+
+    render json: { message: I18n.t('users.show_success'), user: user }
+  end
 
   def create
     user = User.new(create_user_params)
@@ -61,7 +67,7 @@ class UsersController < ApplicationController
     render json: { errors: [I18n.t('sessions.incorrect_password')] }, status: :unprocessable_entity
   end
 
-  def record_invalid(raised_error)
-    render json: { errors: raised_error.record.errors.full_messages }, status: :unprocessable_entity
+  def must_be_in_a_guild
+    render json: { errors: [I18n.t('guilds.must_be_in_a_guild')] }, status: :forbidden
   end
 end

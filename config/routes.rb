@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   scope '/', defaults: { format: :json } do
     # UsersController
+    resources :users, only: %i[show]
     post 'sign_up', to: 'users#create'
     patch 'account', to: 'users#update'
     delete 'account', to: 'users#destroy'
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
+
+    # GuildsController
+    resources :guilds, only: %i[create]
+    delete 'guild', to: 'guilds#destroy'
 
     # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
     # Can be used by load balancers and uptime monitors to verify that the app is live.

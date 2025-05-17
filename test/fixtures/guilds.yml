@@ -1,0 +1,9 @@
+one:
+  id: 1
+  name: 'Regular Guild'
+  motto: 'We sure do exist'
+
+big_hat:
+  id: 2
+  name: 'Big Hat Guild'
+  motto: 'Logan is a poser'

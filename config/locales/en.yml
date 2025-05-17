@@ -28,8 +28,10 @@
 #       enabled: "ON"
 
 en:
+  general:
+    not_found: "The record you're looking for has not been found."
   auth:
-      auth_fail: 'You need to login to access this.'
+    auth_fail: 'You need to login to access this.'
   sessions:
     already_present: 'You are already logged in.'
     destroy_session: 'Session destroyed.'
@@ -43,6 +45,7 @@ en:
     account_unconfirmed: 'Please confirm your email first.'
     update_success: 'Password reset successfully.'
   users:
+    show_success: 'User returned successfully.'
     create_success: 'User created successfully.'
     destroy_success: 'User deleted successfully.'
     update_success: 'User updated successfully.'
@@ -55,3 +58,7 @@ en:
     token_invalid: 'Invalid token supplied.'
     click_to_confirm: 'Click here to confirm your email.'
     failed_confirm: 'Failed to confirm your account.'
+  guilds:
+    must_be_in_a_guild: 'You must be in a guild to use this feature.'
+    already_in_a_guild: 'User is already in a guild and cannot join another.'
+    create_success: 'Guild created successfully.'
