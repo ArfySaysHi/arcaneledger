@@ -1,0 +1,3 @@
+<h1><%= I18n.t('guilds.subject_invite') %></h1>
+<!-- TODO: Add guild name and redirect to the frontend for signup purposes  -->
+<%= link_to I18n.t('guilds.click_to_join'), controller: 'guilds', action: 'accept_invitation', user_id: @user_id, invitation_token: @invitation_token %>

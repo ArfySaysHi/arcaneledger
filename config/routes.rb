@@ -26,7 +26,12 @@ Rails.application.routes.draw do
     end
 
     # GuildsController
-    resources :guilds, only: %i[create]
+    resources :guilds, only: %i[create] do
+      collection do
+          post 'invite_member'
+          get 'accept_invitation'
+      end
+    end
     delete 'guild', to: 'guilds#destroy'
 
     # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
