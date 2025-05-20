@@ -27,6 +27,6 @@ class ActiveSessionsController < ApplicationController
   private
 
   def render_destroy_session
-    render json: { message: I18n.t('destroy_session') }, status: :ok
+    render_message!(:destroy_session)
   end
 end

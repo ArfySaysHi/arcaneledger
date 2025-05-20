@@ -36,11 +36,11 @@ module Authentication
   end
 
   def cancel_if_authenticated
-    render json: { message: I18n.t('sessions.already_present') }, status: :ok and return if user_signed_in?
+    render_message('sessions.already_present') and return if user_signed_in?
   end
 
   def authenticate_user!
-    render json: { errors: [I18n.t('auth.auth_fail')] }, status: :forbidden and return unless user_signed_in?
+    render_error(:auth_fail, status: :forbidden) and return unless user_signed_in?
   end
 
   private
@@ -52,7 +52,6 @@ module Authentication
   def retrieve_current_user
     session_present = session[:current_active_session_id].present?
     remember_token = cookies.permanent.encrypted[:remember_token]
-
     return ActiveSession.find_by(id: session[:current_active_session_id])&.user if session_present
 
     ActiveSession.find_by(remember_token: remember_token)&.user if remember_token

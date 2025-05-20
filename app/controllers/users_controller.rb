@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     must_be_in_a_guild and return unless current_user.guild_id
 
     user = User.where(guild_id: current_user.guild_id).find(params[:id])
-
     render json: { message: I18n.t('users.show_success'), user: user }
   end
 
@@ -25,18 +24,20 @@ class UsersController < ApplicationController
     end
   end
 
-  # Rubocop didn't like the conditionals in the controller so... there you go
   def update
-    user = current_user
+    incorrect_password and return unless current_user.authenticate(params[:user][:current_password])
 
-    update_user(user)
+    user.update!(update_user_params)
+    update_new_email(user) and return if params[:user][:unconfirmed_email].present?
+
+    render_message!(:update_success)
   end
 
   def destroy
     current_user.destroy
     reset_session
 
-    render json: { message: I18n.t('users.destroy_success') }, status: :ok
+    render_message!(:destroy_success)
   end
 
   private
@@ -49,25 +50,16 @@ class UsersController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation, :unconfirmed_email)
   end
 
-  def update_user(user)
-    incorrect_password and return unless user.authenticate(params[:user][:current_password])
-
-    user.update!(update_user_params)
-    update_new_email(user) and return if params[:user][:unconfirmed_email].present?
-
-    render json: { message: I18n.t('users.update_success') }, status: :ok
-  end
-
   def update_new_email(user)
     user.send_confirmation_email!
-    render json: { message: I18n.t('confirmations.check_email') }, status: :ok
+    render_message('confirmations.check_email')
   end
 
   def incorrect_password
-    render json: { errors: [I18n.t('sessions.incorrect_password')] }, status: :unprocessable_entity
+    render_error('sessions.incorrect_password')
   end
 
   def must_be_in_a_guild
-    render json: { errors: [I18n.t('guilds.must_be_in_a_guild')] }, status: :forbidden
+    render_error('guilds.must_be_in_a_guild', status: :forbidden)
   end
 end

@@ -26,13 +26,13 @@ Rails.application.routes.draw do
     end
 
     # GuildsController
-    resources :guilds, only: %i[create] do
-      collection do
-          post 'invite_member'
-          get 'accept_invitation'
-      end
-    end
+    resources :guilds, only: %i[create]
     delete 'guild', to: 'guilds#destroy'
+
+    namespace :guilds do
+      get :invitation, to: 'invitations#show'
+      post :invitation, to: 'invitations#create'
+    end
 
     # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
     # Can be used by load balancers and uptime monitors to verify that the app is live.

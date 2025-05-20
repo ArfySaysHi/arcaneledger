@@ -8,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get user_url(users(:admin).id)
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should fail if the current user is not in a guild' do
@@ -16,7 +16,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get user_url(users(:admin).id)
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('guilds.must_be_in_a_guild'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.guilds.must_be_in_a_guild'), @response.parsed_body[:error]
     end
 
     test 'should fail if the current user is not in the same guild as the target' do
@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get user_url(users(:admin).id)
 
       assert_equal 404, @response.status
-      assert_equal I18n.t('general.not_found'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.not_found'), @response.parsed_body[:error]
     end
 
     test 'should return target user if successful' do
@@ -32,7 +32,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get user_url(users(:guild_member).id)
 
       assert_equal 200, @response.status
-      assert_equal I18n.t('users.show_success'), @response.parsed_body[:message]
+      assert_equal I18n.t('errors.users.show_success'), @response.parsed_body[:message]
     end
   end
 

@@ -1,48 +1,29 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  general:
-    not_found: "The record you're looking for has not been found."
-  auth:
-    auth_fail: 'You need to login to access this.'
+  errors:
+      auth_fail: 'You need to login to access this.'
+      invalid_token: 'One or more invalid tokens were supplied.'
+      not_found: "The record you're looking for has not been found."
+      guilds:
+          already_in_a_guild: 'User is already in a guild and cannot join another.'
+          does_not_exist: 'Guild requested does not exist.'
+          must_be_in_a_guild: 'User must be part of a guild.'
+      sessions:
+          invalid_login: 'Incorrect email or password.'
+      active_sessions:
+          destroy_success: 'Active session destroyed successfully.'
+      passwords:
+          account_unconfirmed: 'Please confirm your email first.'
+      confirmations:
+          cannot_find: 'No valid user found under that email address.'
+          token_invalid: 'Invalid token supplied.'
+          failed_confirm: 'Failed to confirm your account.'
   sessions:
     already_present: 'You are already logged in.'
-    destroy_session: 'Session destroyed.'
-    create_session: 'Session established.'
-    default_error: 'Incorrect email or password.'
-    token_expired: 'Invalid or expired token.'
-    incorrect_password: 'Incorrect password supplied.'
+    destroy_success: 'Session destroyed.'
+    create_success: 'Session established.'
   passwords:
     click_to_reset: 'Click here to reset your password.'
     create_success: "If that user exists we've sent instructions to their email."
-    account_unconfirmed: 'Please confirm your email first.'
     update_success: 'Password reset successfully.'
   users:
     show_success: 'User returned successfully.'
@@ -53,15 +34,11 @@ en:
     subject_password_reset: 'Arcane Ledger Password Reset'
   confirmations:
     check_email: 'Check your email for confirmation instructions.'
-    cannot_find: 'No valid user found under that email address.'
     confirmed: 'Your account has been confirmed.'
-    token_invalid: 'Invalid token supplied.'
     click_to_confirm: 'Click here to confirm your email.'
-    failed_confirm: 'Failed to confirm your account.'
   guilds:
-    must_be_in_a_guild: 'You must be in a guild to use this feature.'
-    already_in_a_guild: 'User is already in a guild and cannot join another.'
     create_success: 'Guild created successfully.'
+    destroy_success: 'Guild destroyed successfully.'
     subject_invite: 'Arcane Ledger Guild Invitation'
     click_to_join: 'Click to join.'
     invite_member_success: 'User has been invited via email.'

@@ -16,19 +16,19 @@ class SessionsController < ApplicationController
     logout
     forget_active_session
 
-    render json: { message: I18n.t('sessions.destroy_session') }, status: :ok
+    render_message!(:destroy_success)
   end
 
   private
 
-  def create_session_auth
+  def authenticate_user
     User.authenticate_by(email: params[:user][:email].downcase, password: params[:user][:password])
   end
 
   def create_valid?(user)
     return false unless user
     return false if user.unconfirmed?
-    return false unless create_session_auth
+    return false unless authenticate_user
 
     true
   end
@@ -44,6 +44,6 @@ class SessionsController < ApplicationController
   end
 
   def render_default_error
-    render json: { errors: [I18n.t('sessions.default_error')] }, status: :unprocessable_entity
+    render_error!(:invalid_login)
   end
 end

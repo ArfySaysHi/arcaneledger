@@ -10,7 +10,7 @@ class ConfirmationsController < ApplicationController
     cannot_find and return unless user.present? && user.unconfirmed_or_reconfirming?
 
     user.send_confirmation_email!
-    render json: { message: I18n.t('confirmations.check_email') }
+    render_message!(:check_email)
   end
 
   def edit
@@ -20,20 +20,20 @@ class ConfirmationsController < ApplicationController
     failed_confirm and return unless user.confirm!
 
     login user
-    render json: { message: I18n.t('confirmations.confirmed') }
+    render_message!(:confirmed)
   end
 
   private
 
   def cannot_find
-    render json: { errors: [I18n.t('confirmations.cannot_find')] }, status: :not_found
+    render_error!(:cannot_find, status: :not_found)
   end
 
   def token_invalid
-    render json: { errors: [I18n.t('confirmations.token_invalid')] }, status: :unprocessable_content
+    render_error!(:token_invalid)
   end
 
   def failed_confirm
-    render json: { errors: [I18n.t('confirmations.failed_confirm')] }, status: :unprocessable_content
+    render_error!(:failed_confirm)
   end
 end

@@ -41,6 +41,14 @@ class User < ApplicationRecord
     unconfirmed? || reconfirming?
   end
 
+  def guilded?
+    guild_id.present?
+  end
+
+  def guildless?
+    !guilded?
+  end
+
   def confirmable_email
     return unconfirmed_email if unconfirmed_email.present?
 
