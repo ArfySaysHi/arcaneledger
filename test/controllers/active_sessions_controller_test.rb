@@ -8,7 +8,7 @@ class ActiveSessionsControllerTest < ActionDispatch::IntegrationTest
       get active_sessions_url
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should retrieve an array of active sessions if authenticated' do
@@ -30,7 +30,7 @@ class ActiveSessionsControllerTest < ActionDispatch::IntegrationTest
       delete active_session_url(1)
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should destroy the active session for the current user' do
@@ -40,7 +40,7 @@ class ActiveSessionsControllerTest < ActionDispatch::IntegrationTest
       delete active_session_url(session_id)
 
       assert_equal 200, @response.status
-      assert_equal I18n.t('destroy_session'), @response.parsed_body[:message]
+      assert_equal I18n.t('active_sessions.destroy_success'), @response.parsed_body[:message]
     end
   end
 
@@ -49,7 +49,7 @@ class ActiveSessionsControllerTest < ActionDispatch::IntegrationTest
       delete active_session_url(1)
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should destroy all active sessions for the current user' do
@@ -57,7 +57,7 @@ class ActiveSessionsControllerTest < ActionDispatch::IntegrationTest
       delete destroy_all_active_sessions_url
 
       assert_equal 200, @response.status
-      assert_equal I18n.t('destroy_session'), @response.parsed_body[:message]
+      assert_equal I18n.t('active_sessions.destroy_success'), @response.parsed_body[:message]
     end
   end
 end

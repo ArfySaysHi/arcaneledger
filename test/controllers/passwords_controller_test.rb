@@ -15,7 +15,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
       post passwords_url, params: { user: { email: users(:notconfirmed).email } }
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('passwords.account_unconfirmed'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.passwords.account_unconfirmed'), @response.parsed_body[:error]
     end
 
     test 'send the email and return a success if a valid user is given' do
@@ -55,7 +55,8 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
         user: { password: 'newpass', password_confirmation: 'newpass' }, xhr: true
       }
 
-      assert_equal I18n.t('sessions.token_expired'), @response.parsed_body[:errors][0]
+      assert_equal 403, @response.status
+      assert_equal I18n.t('errors.invalid_token'), @response.parsed_body[:error]
     end
 
     test 'returns a failure if the password and confirmation do not match' do

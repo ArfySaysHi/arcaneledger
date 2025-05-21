@@ -32,7 +32,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       get user_url(users(:guild_member).id)
 
       assert_equal 200, @response.status
-      assert_equal I18n.t('errors.users.show_success'), @response.parsed_body[:message]
+      assert_equal I18n.t('users.show_success'), @response.parsed_body[:message]
     end
   end
 
@@ -85,7 +85,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       } }
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should return invalid password when details are wrong' do
@@ -97,7 +97,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       } }
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('sessions.incorrect_password'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.sessions.incorrect_password'), @response.parsed_body[:error]
     end
 
     test 'should return validation errors if authed but failed update' do
@@ -142,7 +142,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete account_url
 
       assert_equal 403, @response.status
-      assert_equal I18n.t('auth.auth_fail'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.auth_fail'), @response.parsed_body[:error]
     end
 
     test 'should delete the user if authenticated' do

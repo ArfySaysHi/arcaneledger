@@ -10,7 +10,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('sessions.default_error'), body[:errors][0]
+      assert_equal I18n.t('errors.sessions.invalid_login'), body[:error]
     end
 
     test 'should return an error if the user exists but is unconfirmed' do
@@ -19,7 +19,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('sessions.default_error'), body[:errors][0]
+      assert_equal I18n.t('errors.sessions.invalid_login'), body[:error]
     end
 
     test 'should return an error if the user exists but password is wrong' do
@@ -28,7 +28,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('sessions.default_error'), body[:errors][0]
+      assert_equal I18n.t('errors.sessions.invalid_login'), body[:error]
     end
 
     test 'should create the session if all the above are satisfied' do
@@ -60,7 +60,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 200, @response.status
-      assert_equal I18n.t('sessions.destroy_session'), body[:message]
+      assert_equal I18n.t('sessions.destroy_success'), body[:message]
     end
   end
 end

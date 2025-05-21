@@ -27,6 +27,6 @@ class ActiveSessionsController < ApplicationController
   private
 
   def render_destroy_session
-    render_message!(:destroy_session)
+    render_message!(:destroy_success)
   end
 end

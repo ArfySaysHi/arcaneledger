@@ -10,7 +10,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 404, @response.status
-      assert_equal I18n.t('confirmations.cannot_find'), body[:errors][0]
+      assert_equal I18n.t('errors.confirmations.cannot_find'), body[:error]
     end
 
     test 'return an error if user is confirmed already' do
@@ -19,7 +19,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 404, @response.status
-      assert_equal I18n.t('confirmations.cannot_find'), body[:errors][0]
+      assert_equal I18n.t('errors.confirmations.cannot_find'), body[:error]
     end
 
     test 'should send the confirmation email if the user is present and unconfirmed' do
@@ -60,7 +60,7 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       body = @response.parsed_body
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('confirmations.token_invalid'), body[:errors][0]
+      assert_equal I18n.t('errors.confirmations.token_invalid'), body[:error]
     end
 
     test 'should fail to confirm the user and return failed_confirm' do
@@ -72,17 +72,14 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       get url # Attempts to confirm an already confirmed user
 
       assert_equal 422, @response.status
-      assert_equal I18n.t('confirmations.failed_confirm'), @response.parsed_body[:errors][0]
+      assert_equal I18n.t('errors.confirmations.failed_confirm'), @response.parsed_body[:error]
     end
 
     test 'should confirm the user and return a confirmation message on success' do
       post confirmations_url, params: { user: { email: users(:notconfirmed).email } }
 
-      email = Capybara.string(ActionMailer::Base.deliveries.last.to_s)
-      page = email.find(:link, I18n.t('confirmations.click_to_confirm'))
-      url = page[:href]
-
       # Make the request to hit the edit endpoint
+      url = retrieve_confirmation_url
       get url
 
       assert_equal 200, @response.status
@@ -93,10 +90,8 @@ class ConfirmationsControllerTest < ActionDispatch::IntegrationTest
       post login_url, params: { user: { email: users(:admin).email, password: 'admin' } }
       get edit_confirmation_url('some_random_characters')
 
-      body = @response.parsed_body
-
       assert_equal 200, @response.status
-      assert_equal I18n.t('sessions.already_present'), body[:message]
+      assert_equal I18n.t('sessions.already_present'), @response.parsed_body[:message]
     end
 
     private

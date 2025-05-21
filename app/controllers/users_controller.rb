@@ -27,8 +27,8 @@ class UsersController < ApplicationController
   def update
     incorrect_password and return unless current_user.authenticate(params[:user][:current_password])
 
-    user.update!(update_user_params)
-    update_new_email(user) and return if params[:user][:unconfirmed_email].present?
+    current_user.update!(update_user_params)
+    update_new_email(current_user) and return if params[:user][:unconfirmed_email].present?
 
     render_message!(:update_success)
   end
