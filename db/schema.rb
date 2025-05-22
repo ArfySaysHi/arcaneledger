@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_174535) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_22_125512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -25,12 +25,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_174535) do
     t.index ["user_id"], name: "index_active_sessions_on_user_id"
   end
 
-  create_table "councils", force: :cascade do |t|
+  create_table "commodities", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "guild_id", null: false
+    t.text "description", null: false
+    t.integer "value", default: 0, null: false
+    t.integer "category", default: 0, null: false
+    t.string "commodity_type", null: false
+    t.string "origin", null: false
+    t.string "unit", null: false
+    t.datetime "expiry_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["guild_id"], name: "index_councils_on_guild_id"
+    t.index ["name"], name: "index_commodities_on_name", unique: true
+    t.check_constraint "value >= 0", name: "value_never_negative"
   end
 
   create_table "guilds", force: :cascade do |t|
@@ -54,6 +61,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_174535) do
   end
 
   add_foreign_key "active_sessions", "users", on_delete: :cascade
-  add_foreign_key "councils", "guilds"
   add_foreign_key "users", "guilds"
 end
