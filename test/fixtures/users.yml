@@ -4,13 +4,13 @@ admin:
     email: 'admin@admin.com'
     password_digest: <%= BCrypt::Password.create('admin') %>
     confirmed_at: <%= Date.new(2001, 12, 31) %>
-    guild_id: 1
+    guild: one
 
 guild_member:
     email: 'guildy@guild.com'
     password_digest: <%= BCrypt::Password.create('password') %>
     confirmed_at: <%= Date.new(2002, 12, 30) %>
-    guild_id: 1
+    guild: one
 
 guildless:
     email: 'bobby@nomates.com'
@@ -21,7 +21,7 @@ big_hat_guild:
     email: 'madhat@bighat.com'
     password_digest: <%= BCrypt::Password.create('password') %>
     confirmed_at: <%= Date.new(2003, 11, 12) %>
-    guild_id: 2
+    guild: big_hat
 
 notconfirmed:
     email: 'notconfirmed@arcaneledger.com'

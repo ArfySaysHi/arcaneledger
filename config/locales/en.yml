@@ -17,6 +17,8 @@ en:
           cannot_find: 'No valid user found under that email address.'
           token_invalid: 'Invalid token supplied.'
           failed_confirm: 'Failed to confirm your account.'
+      inventories:
+          uniqueness: 'supplied already has an inventory.'
   sessions:
     already_present: 'You are already logged in.'
     destroy_success: 'Session destroyed.'
