@@ -1,0 +1,170 @@
+copper_ore:
+  name: 'Copper Ore'
+  description: 'A common metal ore used for tools, coinage, and alloys.'
+  value: 300  # 3 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Redstone Quarry'
+  unit: 'chunk'
+
+copper_bar:
+  name: 'Copper Bar'
+  description: 'A refined bar of copper, ready for crafting or trade.'
+  value: 900  # 9 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Redstone Smeltery'
+  unit: 'bar'
+
+tin_ore:
+  name: 'Tin Ore'
+  description: 'A soft metal ore often combined with copper to create bronze.'
+  value: 250  # 2 silver 50 copper
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Mossmere Mine'
+  unit: 'chunk'
+
+tin_bar:
+  name: 'Tin Bar'
+  description: 'A lightweight metal bar used primarily in alloy-making.'
+  value: 750  # 7 silver 50 copper
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Mossmere Smeltery'
+  unit: 'bar'
+
+bronze_ingot:
+  name: 'Bronze Ingot'
+  description: 'An alloy of copper and tin, favored for its strength and affordability.'
+  value: 1600  # 16 silver
+  category: 1
+  commodity_type: 'Alloy'
+  origin: 'Stoneforge Foundry'
+  unit: 'ingot'
+
+adamantine_ore:
+  name: 'Adamantine Ore'
+  description: 'An exceptionally rare ore, prized for its near-indestructible properties.'
+  value: 8000  # 80 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Underdeep Vaults'
+  unit: 'chunk'
+
+adamantine_bar:
+  name: 'Adamantine Bar'
+  description: 'A bar of pure adamantine, renowned for its legendary resilience.'
+  value: 32000  # 3 gold 20 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Underdeep Forge'
+  unit: 'bar'
+
+electrum_ore:
+  name: 'Electrum Ore'
+  description: 'A natural mix of gold and silver, used in fine craftsmanship and ancient coinage.'
+  value: 3000  # 30 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Sunshadow Vein'
+  unit: 'chunk'
+
+electrum_bar:
+  name: 'Electrum Bar'
+  description: 'A refined bar of electrum, sought after for its mystical properties.'
+  value: 9000  # 90 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Sunshadow Forge'
+  unit: 'bar'
+
+iron_ore:
+  name: 'Iron Ore'
+  description: 'Raw mineral used in smelting to produce iron and steel.'
+  value: 500  # 5 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Mountain Quarry'
+  unit: 'chunk'
+
+iron_bar:
+  name: 'Iron Bar'
+  description: 'A solid bar of smelted iron, ready for forging.'
+  value: 1500  # 15 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Mountain Forge'
+  unit: 'bar'
+
+silver_ore:
+  name: 'Silver Ore'
+  description: 'A precious ore often used for coinage and enchanted items.'
+  value: 1200  # 12 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Glitterdeep Mines'
+  unit: 'chunk'
+
+silver_bar:
+  name: 'Silver Bar'
+  description: 'A bar of refined silver, prized by smiths and enchanters.'
+  value: 3600  # 36 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Glitterdeep Smeltery'
+  unit: 'bar'
+
+gold_ore:
+  name: 'Gold Ore'
+  description: 'A highly valuable ore used for minting coins and noble trinkets.'
+  value: 2500  # 25 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Sunspire Caves'
+  unit: 'chunk'
+
+gold_bar:
+  name: 'Gold Bar'
+  description: 'A refined gold bar, sign of wealth and power.'
+  value: 7500  # 75 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Sunspire Foundry'
+  unit: 'bar'
+
+star_metal_ore:
+  name: 'Star Metal Ore'
+  description: 'A shimmering, rare ore said to have fallen from the heavens.'
+  value: 5000  # 50 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Meteor Crater'
+  unit: 'chunk'
+
+star_metal_bar:
+  name: 'Star Metal Bar'
+  description: 'A rare and exceptionally durable bar forged from star metal.'
+  value: 20000  # 2 gold
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Celestial Forge'
+  unit: 'bar'
+
+mithril_ore:
+  name: 'Mithril Ore'
+  description: 'A rare silvery-blue ore valued for its light weight and incredible strength.'
+  value: 4000  # 40 silver
+  category: 1
+  commodity_type: 'Mineral'
+  origin: 'Deepdelve Tunnels'
+  unit: 'chunk'
+
+mithril_bar:
+  name: 'Mithril Bar'
+  description: 'A highly sought-after bar of refined mithril.'
+  value: 16000  # 1 gold 60 silver
+  category: 1
+  commodity_type: 'Metal'
+  origin: 'Deepdelve Foundry'
+  unit: 'bar'

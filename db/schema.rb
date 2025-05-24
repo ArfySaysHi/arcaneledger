@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_23_103909) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_24_133749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -55,6 +55,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_23_103909) do
     t.index ["guild_id"], name: "index_inventories_on_guild_id", unique: true
   end
 
+  create_table "items", force: :cascade do |t|
+    t.integer "amount", default: 0, null: false
+    t.integer "price_on_acquisition", default: 0, null: false
+    t.bigint "inventory_id", null: false
+    t.bigint "commodity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commodity_id"], name: "index_items_on_commodity_id"
+    t.index ["inventory_id"], name: "index_items_on_inventory_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
@@ -69,5 +80,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_23_103909) do
 
   add_foreign_key "active_sessions", "users", on_delete: :cascade
   add_foreign_key "inventories", "guilds", on_delete: :cascade
+  add_foreign_key "items", "commodities", on_delete: :cascade
+  add_foreign_key "items", "inventories", on_delete: :cascade
   add_foreign_key "users", "guilds"
 end

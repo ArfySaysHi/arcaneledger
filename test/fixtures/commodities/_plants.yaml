@@ -1,0 +1,224 @@
+wheat:
+  name: 'Wheat'
+  description: 'A common crop used to make flour and other foodstuffs.'
+  value: 200  # 2 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Farmer Joe'
+  unit: 'bundle'
+
+barley:
+  name: 'Barley'
+  description: 'A hardy grain often used for brewing and animal feed.'
+  value: 180  # 1 silver 80 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Hillcrest Farms'
+  unit: 'bundle'
+
+flax:
+  name: 'Flax'
+  description: 'A fibrous plant used to produce linen and oils.'
+  value: 350  # 3 silver 50 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Riverbend Fields'
+  unit: 'bundle'
+
+oats:
+  name: 'Oats'
+  description: 'A nutritious grain commonly used as animal feed and porridge.'
+  value: 160  # 1 silver 60 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Greenmeadow Farms'
+  unit: 'bundle'
+
+hemp:
+  name: 'Hemp'
+  description: 'A strong fibrous plant used for ropes, textiles, and paper.'
+  value: 400  # 4 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Ironwood Estates'
+  unit: 'bundle'
+
+rye:
+  name: 'Rye'
+  description: 'A grain used for bread and spirits, known for its resilience.'
+  value: 190  # 1 silver 90 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Stonehill Farms'
+  unit: 'bundle'
+
+corn:
+  name: 'Corn'
+  description: 'A tall cereal plant yielding large grains, staple food in many regions.'
+  value: 220  # 2 silver 20 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Sunfield Meadows'
+  unit: 'ear'
+
+cabbage:
+  name: 'Cabbage'
+  description: 'A leafy vegetable commonly grown in gardens and farms.'
+  value: 150  # 1 silver 50 copper
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Oldtown Gardens'
+  unit: 'head'
+
+mandrake_root:
+  name: 'Mandrake Root'
+  description: 'A twisted root rumored to scream when uprooted, used in potent alchemical brews.'
+  value: 1200  # 12 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Twilight Marsh'
+  unit: 'root'
+
+bloodthorn_berries:
+  name: 'Bloodthorn Berries'
+  description: 'Small, crimson berries known for their bitter taste and medicinal properties.'
+  value: 500  # 5 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Crimson Vale'
+  unit: 'handful'
+
+ghost_moss:
+  name: 'Ghost Moss'
+  description: 'A pale, misty moss that glows faintly in darkness.'
+  value: 800  # 8 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Whispering Woods'
+  unit: 'bundle'
+
+silverleaf:
+  name: 'Silverleaf'
+  description: 'A slender herb with shimmering leaves, often used in healing salves.'
+  value: 600  # 6 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Elder Glade'
+  unit: 'bundle'
+
+wyrmwood:
+  name: 'Wyrmwood'
+  description: 'A hard, aromatic wood favored for wands and protective charms.'
+  value: 1500  # 15 silver
+  category: 1
+  commodity_type: 'Wood'
+  origin: 'Dragonshade Forest'
+  unit: 'branch'
+
+sunblossom_petals:
+  name: 'Sunblossom Petals'
+  description: 'Bright yellow petals used in sun rites and fertility rituals.'
+  value: 300  # 3 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Golden Plains'
+  unit: 'handful'
+
+mystic_resin:
+  name: 'Mystic Resin'
+  description: 'A sap-like material with faintly glowing properties, used in potion making.'
+  value: 600  # 6 silver
+  category: 1
+  commodity_type: 'Organic'
+  origin: 'Whispering Woods'
+  unit: 'flask'
+
+nightshade:
+  name: 'Nightshade'
+  description: 'A highly poisonous plant with dark purple berries.'
+  value: 900  # 9 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Shadowfen'
+  unit: 'bundle'
+
+embervine:
+  name: 'Embervine'
+  description: 'A creeping vine with smoldering red leaves, used in fire-based rituals.'
+  value: 2000  # 20 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Ashen Fields'
+  unit: 'coil'
+
+faerie_blossom:
+  name: 'Faerie Blossom'
+  description: 'A delicate flower said to bloom only under moonlight.'
+  value: 2500  # 25 silver
+  category: 1
+  commodity_type: 'Plant'
+  origin: 'Moonlit Glen'
+  unit: 'blossom'
+
+glowcap_mushroom:
+  name: 'Glowcap Mushroom'
+  description: 'A bioluminescent fungus often used to light caverns and as a reagent in light potions.'
+  value: 700  # 7 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Luminous Hollow'
+  unit: 'cap'
+
+deathcap:
+  name: 'Deathcap'
+  description: 'A deadly poisonous mushroom, lethal if consumed.'
+  value: 1100  # 11 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Dreadmire Swamp'
+  unit: 'cap'
+
+amber_fungus:
+  name: 'Amber Fungus'
+  description: 'A sticky orange fungus prized by alchemists for its use in binding potions.'
+  value: 800  # 8 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Mossgrove Thicket'
+  unit: 'handful'
+
+faerie_spores:
+  name: 'Faerie Spores'
+  description: 'Tiny, shimmering spores rumored to induce visions when inhaled.'
+  value: 1500  # 15 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Moonveil Woods'
+  unit: 'pouch'
+
+ashen_toadstool:
+  name: 'Ashen Toadstool'
+  description: 'A gray fungus found in scorched forests, sometimes used in fire resistance brews.'
+  value: 600  # 6 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Charred Wilds'
+  unit: 'cap'
+
+shadecap:
+  name: 'Shadecap'
+  description: 'A dusky mushroom known for its calming, sleep-inducing properties.'
+  value: 900  # 9 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Ebonroot Grove'
+  unit: 'cap'
+
+wyrmspore:
+  name: 'Wyrmspore'
+  description: 'A rare fungal growth found in abandoned dragon lairs, highly prized by alchemists.'
+  value: 3000  # 30 silver
+  category: 1
+  commodity_type: 'Fungi'
+  origin: 'Dragonspire Caverns'
+  unit: 'spore cluster'

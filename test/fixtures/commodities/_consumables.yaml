@@ -1,0 +1,161 @@
+sunmoss_salve:
+  name: 'Sunmoss Salve'
+  description: 'A thick green ointment made from sunmoss, known to heal minor wounds rapidly.'
+  value: 1200  # 12 silver
+  category: 4
+  commodity_type: 'Medicine'
+  origin: 'Everlight Grove'
+  unit: 'jar'
+
+emberleaf_poultice:
+  name: 'Emberleaf Poultice'
+  description: 'A hot herbal paste made from emberleaf, used to treat frostbite and chills.'
+  value: 1500  # 15 silver
+  category: 4
+  commodity_type: 'Medicine'
+  origin: 'Ashbraid Enclave'
+  unit: 'bundle'
+
+glimmerberry_tonic:
+  name: 'Glimmerberry Tonic'
+  description: 'A sweet, sparkling tonic brewed from glimmerberries, said to restore vigor.'
+  value: 2000  # 20 silver
+  category: 4
+  commodity_type: 'Potion'
+  origin: 'Feyheart Apothecary'
+  unit: 'vial'
+
+whispervine_draught:
+  name: 'Whispervine Draught'
+  description: 'A calming liquid from whispervine leaves, often used to soothe frayed nerves.'
+  value: 1100  # 11 silver
+  category: 4
+  commodity_type: 'Potion'
+  origin: 'Moonshade Vale'
+  unit: 'flask'
+
+manticore_venom_vial:
+  name: 'Manticore Venom Vial'
+  description: 'A vial of deadly manticore tail venom, used to poison weapons.'
+  value: 5000  # 50 silver
+  category: 4
+  commodity_type: 'Poison'
+  origin: 'Scarwind Basin'
+  unit: 'vial'
+
+wyvern_blood_elixir:
+  name: 'Wyvern Blood Elixir'
+  description: 'A potent brew distilled from wyvern blood, granting temporary resistance to poison.'
+  value: 4500  # 45 silver
+  category: 4
+  commodity_type: 'Potion'
+  origin: 'Wyrmfang Peaks'
+  unit: 'flask'
+
+phoenix_ash_powder:
+  name: 'Phoenix Ash Powder'
+  description: 'The powdered remains of phoenix feathers, capable of reigniting small flames or reviving faint embers.'
+  value: 6000  # 60 silver
+  category: 4
+  commodity_type: 'Reagent'
+  origin: 'Emberhold'
+  unit: 'pouch'
+
+dire_wolf_fang_tincture:
+  name: 'Dire Wolf Fang Tincture'
+  description: 'A sharp tonic made from crushed dire wolf fangs, boosting strength briefly but causing fatigue after.'
+  value: 3000  # 30 silver
+  category: 4
+  commodity_type: 'Potion'
+  origin: 'Frostfang Vale'
+  unit: 'flask'
+
+smokebomb:
+  name: 'Smokebomb'
+  description: 'A small clay sphere filled with black powder, releasing a dense smoke cloud when shattered.'
+  value: 1800  # 18 silver
+  category: 4
+  commodity_type: 'Utility'
+  origin: 'Shadowgate Thieves Guild'
+  unit: 'bomb'
+
+blade_oil_of_serpents:
+  name: 'Blade Oil of Serpents'
+  description: 'A viscous green oil applied to weapons, granting them a venomous edge for a short time.'
+  value: 3500  # 35 silver
+  category: 4
+  commodity_type: 'Poison'
+  origin: 'Venomclaw Marsh'
+  unit: 'vial'
+
+flashpowder_pouch:
+  name: 'Flashpowder Pouch'
+  description: 'A handful of alchemical powder that detonates in a blinding flash when thrown.'
+  value: 2000  # 20 silver
+  category: 4
+  commodity_type: 'Utility'
+  origin: 'Ironcrest Alchemica'
+  unit: 'pouch'
+
+emberroot_salve:
+  name: 'Emberroot Salve'
+  description: 'A warming salve derived from emberroot, used to treat frostbite and numb extremities.'
+  value: 1300  # 13 silver
+  category: 4
+  commodity_type: 'Medicine'
+  origin: 'Ashbraid Enclave'
+  unit: 'jar'
+
+wyvern_blood_philter:
+  name: 'Wyvern Blood Philter'
+  description: 'A distilled potion granting temporary poison resistance, brewed from wyvern blood.'
+  value: 4500  # 45 silver
+  category: 4
+  commodity_type: 'Potion'
+  origin: 'Wyrmfang Peaks'
+  unit: 'flask'
+
+incense_of_serenity:
+  name: 'Incense of Serenity'
+  description: 'Fragrant sticks burned to calm the mind and dispel minor illusions.'
+  value: 2200  # 22 silver
+  category: 4
+  commodity_type: 'Ritual'
+  origin: 'Elderwood Shrine'
+  unit: 'bundle'
+
+venom_dust:
+  name: 'Venom Dust'
+  description: 'A fine, deadly powder made from dried serpent venom, inhaled or applied to wounds.'
+  value: 3000  # 30 silver
+  category: 4
+  commodity_type: 'Poison'
+  origin: 'Venomclaw Marsh'
+  unit: 'pouch'
+
+soulshard_fragment:
+  name: 'Soulshard Fragment'
+  description: 'A glowing crystal remnant, used in dark rituals or necromantic spells.'
+  value: 8000  # 80 silver
+  category: 4
+  commodity_type: 'Reagent'
+  origin: 'Shadowspire Catacombs'
+  unit: 'fragment'
+
+binding_powder:
+  name: 'Binding Powder'
+  description: 'A silver-dust blend thrown at summoned creatures to weaken their link to this plane.'
+  value: 2700  # 27 silver
+  category: 4
+  commodity_type: 'Ritual'
+  origin: 'Feyheart Circle'
+  unit: 'pouch'
+
+phoenix_ash_dust:
+  name: 'Phoenix Ash Dust'
+  description: 'Sacred ash capable of reigniting dying embers or countering certain death curses.'
+  value: 6000  # 60 silver
+  category: 4
+  commodity_type: 'Reagent'
+  origin: 'Emberhold'
+  unit: 'pouch'

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 10
+  price_on_acquisition: 1
+  inventory: one
+  commodity: wheat
+
+two:
+  amount: 1
+  price_on_acquisition: 10
+  inventory: one
+  commodity: wheat

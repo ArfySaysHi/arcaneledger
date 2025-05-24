@@ -1,8 +1,1 @@
-wheat:
-  name: 'Wheat'
-  description: 'A common crop used to make flour and other foodstuffs'
-  value: 2
-  category: 1
-  commodity_type: 'Plant'
-  origin: 'Farmer Joe'
-  unit: 'bundle'
+<%= FixtureInclude.merge('commodities', ['_metals', '_gems', '_plants', '_animal_products', '_provisions', '_equipment', '_consumables']) %>

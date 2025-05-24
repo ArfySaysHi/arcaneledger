@@ -1,0 +1,278 @@
+iron_shovel:
+  name: 'Iron Shovel'
+  description: 'A sturdy shovel used for digging earth or graves.'
+  value: 700  # 7 silver
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Stonehill Smithy'
+  unit: 'piece'
+
+fishing_net:
+  name: 'Fishing Net'
+  description: 'A handwoven net used by fishermen along rivers and coasts.'
+  value: 1200  # 12 silver
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Baywatch Wharf'
+  unit: 'net'
+
+leather_backpack:
+  name: 'Leather Backpack'
+  description: 'A spacious, durable pack for carrying supplies on long journeys.'
+  value: 950  # 9 silver 50 copper
+  category: 3
+  commodity_type: 'Gear'
+  origin: 'Greenmeadow Tanner'
+  unit: 'pack'
+
+iron_lantern:
+  name: 'Iron Lantern'
+  description: 'A metal-framed lantern for carrying light in the dark.'
+  value: 800  # 8 silver
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Ironcrest Forge'
+  unit: 'piece'
+
+rope_coil:
+  name: 'Rope Coil (50 ft.)'
+  description: 'A long coil of hemp rope, essential for climbing and hauling.'
+  value: 600  # 6 silver
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Stonehill Tanner'
+  unit: 'coil'
+
+iron_hammer:
+  name: 'Iron Hammer'
+  description: 'A reliable tool for building, smithing, or cracking skulls.'
+  value: 750  # 7 silver 50 copper
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Forgeheart Smithy'
+  unit: 'piece'
+
+tent_kit:
+  name: 'Tent Kit'
+  description: 'A canvas tent with wooden poles, suitable for two travelers.'
+  value: 1800  # 18 silver
+  category: 3
+  commodity_type: 'Gear'
+  origin: 'Wanderer’s Market'
+  unit: 'kit'
+
+whetstone:
+  name: 'Whetstone'
+  description: 'A small stone block for sharpening blades.'
+  value: 400  # 4 silver
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Ironcrest Forge'
+  unit: 'piece'
+
+cooking_pot:
+  name: 'Cooking Pot'
+  description: 'A heavy iron pot for preparing meals over a fire.'
+  value: 850  # 8 silver 50 copper
+  category: 3
+  commodity_type: 'Tool'
+  origin: 'Stonehill Smithy'
+  unit: 'pot'
+
+waterskin:
+  name: 'Waterskin'
+  description: 'A durable leather pouch for carrying drinking water.'
+  value: 300  # 3 silver
+  category: 3
+  commodity_type: 'Gear'
+  origin: 'Greenmeadow Tanner'
+  unit: 'skin'
+
+iron_sword:
+  name: 'Iron Sword'
+  description: 'A dependable, single-edged iron sword favored by footmen.'
+  value: 2500  # 25 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Forgeheart Smithy'
+  unit: 'piece'
+
+oak_longbow:
+  name: 'Oak Longbow'
+  description: 'A longbow crafted from sturdy oak, used by hunters and rangers.'
+  value: 3200  # 32 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Greentree Bowyer'
+  unit: 'piece'
+
+steel_dagger:
+  name: 'Steel Dagger'
+  description: 'A short, sharp blade used for self-defense and silent kills.'
+  value: 1400  # 14 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Ironcrest Forge'
+  unit: 'piece'
+
+warhammer:
+  name: 'Warhammer'
+  description: 'A brutal weapon capable of crushing armor and bone alike.'
+  value: 3700  # 37 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Forgeheart Smithy'
+  unit: 'piece'
+
+throwing_axes:
+  name: 'Throwing Axes (Pair)'
+  description: 'Balanced axes designed for hurling at enemies from a distance.'
+  value: 2100  # 21 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Stonehill Smithy'
+  unit: 'pair'
+
+iron_spear:
+  name: 'Iron Spear'
+  description: 'A long, iron-tipped spear, effective against charging foes.'
+  value: 2800  # 28 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Ironcrest Forge'
+  unit: 'piece'
+
+leather_armor:
+  name: 'Leather Armor'
+  description: 'A set of boiled leather armor offering modest protection.'
+  value: 4000  # 40 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Greenmeadow Tanner'
+  unit: 'set'
+
+iron_helmet:
+  name: 'Iron Helmet'
+  description: 'A simple iron helm for protecting the head in battle.'
+  value: 1800  # 18 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Forgeheart Smithy'
+  unit: 'piece'
+
+chainmail_hauberk:
+  name: 'Chainmail Hauberk'
+  description: 'A chainmail shirt offering excellent protection against cuts.'
+  value: 7500  # 75 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Ironcrest Forge'
+  unit: 'piece'
+
+wooden_shield:
+  name: 'Wooden Shield'
+  description: 'A round wooden shield with a central iron boss.'
+  value: 2200  # 22 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Greentree Carpenter'
+  unit: 'piece'
+
+steel_breastplate:
+  name: 'Steel Breastplate'
+  description: 'A solid piece of steel armor protecting the torso.'
+  value: 12000  # 1 gold 20 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Forgeheart Smithy'
+  unit: 'piece'
+
+armored_gauntlets:
+  name: 'Armored Gauntlets'
+  description: 'Steel gloves protecting the hands while retaining dexterity.'
+  value: 3000  # 30 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Ironcrest Forge'
+  unit: 'pair'
+
+shadowsteel_dagger:
+  name: 'Shadowsteel Dagger'
+  description: 'Forged from rare shadowsteel, this blade can pass through armor in dim light.'
+  value: 12500  # 1 gold 25 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Nightforge Deep'
+  unit: 'piece'
+
+stormcallers_spear:
+  name: 'Stormcaller’s Spear'
+  description: 'A long spear crackling with dormant storm magic, rumored to strike lightning in battle.'
+  value: 20000  # 2 gold
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Skyreach Spire'
+  unit: 'piece'
+
+phoenixbow:
+  name: 'Phoenixbow'
+  description: 'A longbow made from phoenix featherwood, said to ignite arrows in mid-flight.'
+  value: 18000  # 1 gold 80 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Emberhold'
+  unit: 'piece'
+
+frostfang_blade:
+  name: 'Frostfang Blade'
+  description: 'A sword crafted from ice-hardened wyrm bone, exuding a deathly chill.'
+  value: 22000  # 2 gold 20 silver
+  category: 3
+  commodity_type: 'Weapon'
+  origin: 'Icerend'
+  unit: 'piece'
+
+wyvernhide_cuirass:
+  name: 'Wyvernhide Cuirass'
+  description: 'Armor crafted from wyvern hide, offering lightweight yet resilient protection.'
+  value: 24000  # 2 gold 40 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Wyrmfang Peaks'
+  unit: 'piece'
+
+mirrorsteel_helm:
+  name: 'Mirrorsteel Helm'
+  description: 'A polished helm that reflects both blades and harmful spells.'
+  value: 17000  # 1 gold 70 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Forgeheart Arcana'
+  unit: 'piece'
+
+runed_shield:
+  name: 'Runed Shield'
+  description: 'An oak and iron shield etched with protective runes that glow faintly when danger is near.'
+  value: 20000  # 2 gold
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Elderwood Enclave'
+  unit: 'piece'
+
+manticorespine_gauntlets:
+  name: 'Manticorespine Gauntlets'
+  description: 'Gauntlets tipped with venomous manticore spines, doubling as deadly close-quarters weapons.'
+  value: 19000  # 1 gold 90 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Scarwind Basin'
+  unit: 'pair'
+
+cloak_of_embers:
+  name: 'Cloak of Embers'
+  description: 'A flame-touched cloak offering protection from fire and concealment in smoke.'
+  value: 28000  # 2 gold 80 silver
+  category: 3
+  commodity_type: 'Armor'
+  origin: 'Ashbraid Enclave'
+  unit: 'cloak'
