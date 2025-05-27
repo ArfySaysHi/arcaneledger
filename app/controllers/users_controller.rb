@@ -43,11 +43,11 @@ class UsersController < ApplicationController
   private
 
   def create_user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.expect(user: %i[email password password_confirmation])
   end
 
   def update_user_params
-    params.require(:user).permit(:password, :password_confirmation, :unconfirmed_email)
+    params.expect(user: %i[password password_confirmation unconfirmed_email])
   end
 
   def update_new_email(user)

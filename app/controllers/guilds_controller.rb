@@ -23,7 +23,7 @@ class GuildsController < ApplicationController
   private
 
   def guild_params
-    params.require(:guild).permit(:name, :motto)
+    params.expect(guild: %i[name motto])
   end
 
   def user_already_in_a_guild

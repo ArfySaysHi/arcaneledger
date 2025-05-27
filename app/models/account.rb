@@ -6,9 +6,9 @@ class Account < ApplicationRecord
 
   belongs_to :guild
   has_many :journal_entries, dependent: :destroy
+  has_many :ledgers, dependent: :destroy
 
   validates :name, presence: true
   validates :account_type, presence: true
   validates :balance, numericality: { only_integer: true }
-  validates :guild_id, presence: true
 end

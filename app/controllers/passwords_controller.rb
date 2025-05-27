@@ -11,7 +11,7 @@ class PasswordsController < ApplicationController
   def create
     user = User.find_by(email: params[:user][:email].downcase)
 
-    password_create_success and return unless user.present?
+    password_create_success and return if user.blank?
     account_unconfirmed and return unless user.confirmed?
 
     user.send_password_reset_email!
@@ -27,7 +27,7 @@ class PasswordsController < ApplicationController
   private
 
   def password_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.expect(user: %i[password password_confirmation])
   end
 
   # Rubocop cyclomatic complexity is why this is here.

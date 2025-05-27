@@ -1,4 +1,8 @@
+plugins:
+    - rubocop-rails
+    - rubocop-capybara
 AllCops:
+  NewCops: enable
   Exclude:
     - 'db/**/*'
     - 'config/**/*'

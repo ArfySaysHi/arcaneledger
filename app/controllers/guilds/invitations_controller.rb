@@ -29,7 +29,7 @@ module Guilds
     private
 
     def invite_params
-      params.require(:user).permit(:email, :id)
+      params.expect(user: %i[email id])
     end
 
     def invalid_token
