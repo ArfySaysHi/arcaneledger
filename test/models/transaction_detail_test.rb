@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-class TransactionTest < ActiveSupport::TestCase
-  class TransactionValidations < TransactionTest
+class TransactionDetailTest < ActiveSupport::TestCase
+  class TransactionDetailValidations < TransactionDetailTest
     test 'should check for the presence of a date' do
-      tra = Transaction.create(description: 'description')
+      tra = TransactionDetail.create(description: 'description')
 
       assert_not tra.valid?
       assert_not tra.persisted?
@@ -13,7 +13,7 @@ class TransactionTest < ActiveSupport::TestCase
     end
 
     test 'should create a valid transaction' do
-      tra = Transaction.create(transaction_date: Date.new(2025, 1, 1), description: 'words')
+      tra = TransactionDetail.create(transaction_date: Date.new(2025, 1, 1), description: 'words')
 
       assert tra.valid?
       assert tra.persisted?

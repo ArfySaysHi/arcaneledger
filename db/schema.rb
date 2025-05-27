@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_26_142506) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_112206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,7 +76,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_142506) do
     t.index ["inventory_id"], name: "index_items_on_inventory_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "journal_entries", force: :cascade do |t|
+    t.bigint "transaction_detail_id", null: false
+    t.bigint "account_id", null: false
+    t.integer "debit", default: 0
+    t.integer "credit", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_journal_entries_on_account_id"
+    t.index ["transaction_detail_id"], name: "index_journal_entries_on_transaction_detail_id"
+  end
+
+  create_table "transaction_details", force: :cascade do |t|
     t.date "transaction_date", null: false
     t.string "description"
     t.datetime "created_at", null: false
@@ -100,5 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_26_142506) do
   add_foreign_key "inventories", "guilds", on_delete: :cascade
   add_foreign_key "items", "commodities", on_delete: :cascade
   add_foreign_key "items", "inventories", on_delete: :cascade
+  add_foreign_key "journal_entries", "accounts", on_delete: :cascade
+  add_foreign_key "journal_entries", "transaction_details", on_delete: :cascade
   add_foreign_key "users", "guilds"
 end
