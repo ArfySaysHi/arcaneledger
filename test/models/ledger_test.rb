@@ -39,5 +39,12 @@ class LedgerTest < ActiveSupport::TestCase
       assert_not ledger.persisted?
       assert_equal "Entry type can't be blank", ledger.errors.full_messages[0]
     end
+
+    test 'should check for entry_type content' do
+      assert_raises(ArgumentError, "'cwedit' is not a valid entry_type") do
+        Ledger.create(account_id: accounts(:one).id, transaction_detail_id: transaction_details(:one).id,
+                      amount: 100, entry_type: 'cwedit')
+      end
+    end
   end
 end
