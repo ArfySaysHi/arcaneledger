@@ -59,10 +59,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
   end
 
   create_table "inventories", force: :cascade do |t|
-    t.bigint "guild_id", null: false
+    t.string "storable_type", null: false
+    t.bigint "storable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["guild_id"], name: "index_inventories_on_guild_id", unique: true
+    t.index ["storable_id", "storable_type"], name: "by_storable", unique: true
+    t.index ["storable_type", "storable_id"], name: "index_inventories_on_storable"
   end
 
   create_table "items", force: :cascade do |t|
@@ -119,7 +121,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
 
   add_foreign_key "accounts", "guilds", on_delete: :cascade
   add_foreign_key "active_sessions", "users", on_delete: :cascade
-  add_foreign_key "inventories", "guilds", on_delete: :cascade
   add_foreign_key "items", "commodities", on_delete: :cascade
   add_foreign_key "items", "inventories", on_delete: :cascade
   add_foreign_key "journal_entries", "accounts", on_delete: :cascade

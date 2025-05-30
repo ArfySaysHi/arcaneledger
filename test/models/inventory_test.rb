@@ -7,14 +7,14 @@ class InventoryTest < ActiveSupport::TestCase
     inv = Inventory.create
 
     assert_not inv.valid?
-    assert_equal 'Guild must exist', inv.errors.full_messages[0]
+    assert_equal 'Storable must exist', inv.errors.full_messages[0]
   end
 
   test 'should return an error if the guild already has an inventory' do
-    inv = Inventory.create(guild_id: guilds(:one).id)
+    inv = Inventory.create(storable_id: guilds(:one).id, storable_type: 'Guild')
 
     assert_not inv.valid?
-    assert_equal 'Guild supplied already has an inventory.', inv.errors.full_messages[0]
+    assert_equal 'Storable supplied already has an inventory.', inv.errors.full_messages[0]
   end
 
   test 'should create an inventory when a valid guild is created' do

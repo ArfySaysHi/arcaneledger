@@ -2,8 +2,8 @@
 
 # Contains all items for a guild
 class Inventory < ApplicationRecord
-  belongs_to :guild
+  belongs_to :storable, polymorphic: true
   has_many :items, dependent: :destroy
 
-  validates :guild_id, uniqueness: { message: I18n.t('errors.inventories.uniqueness') }
+  validates :storable_id, uniqueness: { scope: :storable_type, message: I18n.t('errors.inventories.uniqueness') }
 end

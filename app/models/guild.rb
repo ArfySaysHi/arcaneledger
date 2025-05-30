@@ -5,7 +5,7 @@ class Guild < ApplicationRecord
   INVITATION_TOKEN_EXPIRATION = 10.minutes
 
   has_many :users, dependent: :nullify
-  has_one :inventory, dependent: :destroy
+  has_one :inventory, as: :storable, dependent: :destroy
   has_many :accounts, dependent: :destroy
 
   after_create :create_inventory!
