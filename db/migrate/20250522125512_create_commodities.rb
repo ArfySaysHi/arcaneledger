@@ -6,9 +6,8 @@ class CreateCommodities < ActiveRecord::Migration[8.0]
       t.integer :value, null: false, default: 0
       t.integer :category, null: false, default: 0
       t.string :commodity_type, null: false
-      t.string :origin, null: false
       t.string :unit, null: false
-      t.datetime :expiry_date
+      t.integer :rarity, default: 0
 
       t.timestamps
     end

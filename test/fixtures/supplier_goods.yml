@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scarcity_mod: 1
+  commodity: wheat
+  supplier: one
+
+two:
+  scarcity_mod: 1
+  commodity: wheat
+  supplier: one

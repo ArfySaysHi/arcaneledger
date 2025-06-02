@@ -45,18 +45,18 @@ class CommodityTest < ActiveSupport::TestCase
       assert_equal "Commodity type can't be blank", com.errors.full_messages[0]
     end
 
-    test 'should ensure the origin is present' do
-      com = Commodity.create(**commodities(:wheat).attributes, id: 999, name: 'Not Wheat', origin: nil)
-
-      assert_not com.valid?
-      assert_equal "Origin can't be blank", com.errors.full_messages[0]
-    end
-
     test 'should ensure the unit is present' do
       com = Commodity.create(**commodities(:wheat).attributes, id: 999, name: 'Not Wheat', unit: nil)
 
       assert_not com.valid?
       assert_equal "Unit can't be blank", com.errors.full_messages[0]
+    end
+
+    test 'should ensure the commodity_type is valid' do
+      com = Commodity.create(**commodities(:wheat).attributes, id: 999, name: 'Not Wheat', commodity_type: 'Not Real')
+
+      assert_not com.valid?
+      assert_equal "Commodity type is not included in the list", com.errors.full_messages[0]
     end
   end
 end

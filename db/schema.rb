@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_02_132748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,9 +41,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
     t.integer "value", default: 0, null: false
     t.integer "category", default: 0, null: false
     t.string "commodity_type", null: false
-    t.string "origin", null: false
     t.string "unit", null: false
-    t.datetime "expiry_date"
+    t.integer "rarity", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_commodities_on_name", unique: true
@@ -100,6 +99,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
     t.index ["transaction_detail_id"], name: "index_ledgers_on_transaction_detail_id"
   end
 
+  create_table "supplier_goods", force: :cascade do |t|
+    t.decimal "scarcity_mod", null: false
+    t.bigint "commodity_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commodity_id"], name: "index_supplier_goods_on_commodity_id"
+    t.index ["supplier_id"], name: "index_supplier_goods_on_supplier_id"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transaction_details", force: :cascade do |t|
     t.date "transaction_date", null: false
     t.string "description"
@@ -127,5 +143,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_160055) do
   add_foreign_key "journal_entries", "transaction_details", on_delete: :cascade
   add_foreign_key "ledgers", "accounts", on_delete: :cascade
   add_foreign_key "ledgers", "transaction_details", on_delete: :cascade
+  add_foreign_key "supplier_goods", "commodities"
+  add_foreign_key "supplier_goods", "suppliers"
   add_foreign_key "users", "guilds"
 end

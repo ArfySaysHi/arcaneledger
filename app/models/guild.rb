@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: create Merchants, who have an inventory with many items
+
 # A company
 class Guild < ApplicationRecord
   INVITATION_TOKEN_EXPIRATION = 10.minutes
